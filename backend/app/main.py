@@ -182,8 +182,8 @@ def upload_students_csv(
                 academic_year=row["academic_year"],
                 admission_status=status_value,
             )
-        except Exception as exc:  # noqa: BLE001
-            errors.append({"line": idx, "error": f"Validation error: {exc}"})
+        except Exception:  # noqa: BLE001
+            errors.append({"line": idx, "error": "Validation error in row format or field values"})
             continue
 
         db.add(student)
